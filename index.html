@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Hue Games.Store</title>
+  </head>
+  <body>
+    <div class="container"></div>
+    <header>
+      <img src="assets/svg/logo.svg" alt="logo" />
+      <nav class="navigation">
+       <ul>
+  <li><a href="playstation.html">PlayStation</a></li>
+  <li><a href="pcgames.html">PC </a></li>
+  <li><a href="mobilegames.html">Mobile </a></li> 
+   <li><a href="Login.html">Login</a></li>
+</ul>
+<ul>
+  <li><a href="#RecentGames">Recent Games</a></li>
+  <li><a href="#Best-selling">Best-selling</a></li>
+   <li><a href="#aboutUs">About Us</a></li>
+<li><a href="#contactMe">Contact</a></li>
+</ul>
+
+      </nav>
+      <!-- أيقونة السلة -->
+      <div class="cart">
+        <a href="#" id="cart">
+          <img src="assets/svg/cart.svg" alt="Cart" />
+          <span id="cartCount">0</span>
+        </a>
+      </div>
+    </header>
+
+    <!-- سلة المشتريات -->
+    <div id="cartModal" class="cartModal">
+      <div class="cartContent">
+        <h2>سلة المشتريات</h2>
+        <ul id="cartItems">
+          <!-- سيتم إضافة العناصر هنا بواسطة JavaScript -->
+        </ul>
+        <div class="cartTotal">
+          <p>الإجمالي: <span id="cartTotal">0</span> جنيه</p>
+        </div>
+        <button id="checkoutButton">إتمام الشراء</button>
+        <button id="closeCart">إغلاق</button>
+      </div>
+    </div>
+    <!-- نافذة طرق الدفع -->
+<div id="paymentModal" class="paymentModal">
+  <div class="paymentContent">
+    <h2>اختر طريقة الدفع</h2>
+    <ul>
+      <li><button onclick="payWithVisaCard()">دفع بالفيزا </button></li>
+      <li><button onclick="payWithTelda()">دفع بتيلدا </button></li>
+      <li><button onclick="payWithWallet()">دفع بمحفظة الكترونية </button></li>
+    </ul>
+    <button id="closePaymentModal">إغلاق</button>
+  </div>
+</div>
+
+
+    <section class="hero">
+      <img class="arrow" src="assets/svg/arrow.svg" alt="arrow" />
+      <div class="heroSub">
+        <h1 class="name">Hue Team Developers</h1>
+        <h1 class="title">Software & Computer Engineers</h1>
+        <div class="heroBtns">
+          <a class="hireMe" href="#contactMe">Hire me</a>
+        </div>
+      </div>
+      <img src="assets/svg/Hero.svg" alt="hero image" class="heroImg" />
+    </section>
+
+    <section class="aboutUs" id="aboutUs">
+      <img src="assets/svg/AboutUs.svg" alt="aboutUs image" class="aboutUsImg" />
+      <div class="textContainer">
+        <div class="textTitle">
+          <h1 class="aboutName">About</h1>
+          <h1 class="aboutTitle">Us</h1>
+          <img src="assets/svg/lightbulb.svg" alt="light" class="light" />
+        </div>
+        <p class="aboutUsPar">
+          We are Computer and Systems Engineers from Horus University,
+          passionate about the electronic games business. With over five years
+          of experience in the field, we continuously strive to develop our
+          skills and improve ourselves.
+        </p>
+      </div>
+    </section>
+
+    <section class="RecentGames" id="RecentGames">
+      <div class="RecentGamesContainer">
+        <div class="RecentGamesTitle">
+          <h1 class="aboutName">Recent</h1>
+          <h1 class="aboutTitle">Games</h1>
+        </div>
+        <ul>
+          <li>
+            <a href="#" onclick="addToCart({ name: 'FC 26 : ', price: 3500})">
+              <img src="assets/imgs/fc26.webp" alt="FC 26 : " />
+            </a>
+          </li>
+          <li>
+            <a href="#" onclick="addToCart({ name: 'EA Play : ', price: 500 })">
+              <img src="assets/imgs/ea.jpg" alt="EA Play Pro : " />
+            </a>
+          </li>
+          <li>
+            <a href="#" onclick="addToCart({ name: 'Call Of Duty BlackOps 7 : ', price: 3450 })">
+              <img src="assets/imgs/callofduty7.jpg" alt="Call Of Duty BlackOps 7 : " />
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- PlayStation Games Section -->
+    <section class="Best-selling" id="Best-selling">
+        <div class="Best-sellingContainer">
+        <div class="Best-sellingTitle">
+          <h1 class="aboutName">Best</h1>
+          <h1 class="aboutTitle">-Selling</h1>
+          </div>
+        <ul>
+          <li>
+            <a href="#" onclick="addToCart({ name: 'Rdr2 : ', price: 4600 })">
+              <img src="assets/imgs/rdr2.jpg" alt="Rdr2 :" />
+            </a>
+          </li>
+          <li>
+            <a href="#" onclick="addToCart({ name: 'Hogwarts Legacy : ', price: 4100 })">
+              <img src="assets/imgs/Hogwarts.jpg" alt="Hogwarts Legacy :" />
+            </a>
+          </li>
+          <li>
+            <a href="#" onclick="addToCart({ name: 'gta v : ', price: 2050 })">
+              <img src="assets/imgs/gta v.jpg" alt="gta v :" />
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="contactContainer" id="contactMe">
+      <div class="contactTitle">
+        <h1 class="aboutName">Contact</h1>
+        <h1 class="aboutTitle">Me</h1>
+      </div>
+      <div class="contact">
+        <div class="emailAndPhone">
+          <img src="assets/svg/Email.svg" alt="email logo" />
+          <a href="mailto:elhellawy2006@gmail.com">
+            <h3>elhellawy2006@gmail.com</h3>
+          </a>
+        </div>
+        <div class="emailAndPhone">
+          <img src="assets/svg/phone.svg" alt="phone logo" />
+          <a href="Phonto:01020994187"></a>
+          <h3>+201020994187</h3>
+        </div>
+      </div>
+      <div class="socialMedia">
+        <a href="https://www.facebook.com/youssef.helawy.7/" target="_blank">
+          <img src="assets/svg/facebook.svg" alt="My Facebook account" />
+        </a>
+        <a href="https://github.com/youssefhellawy" target="_blank">
+          <img src="assets/svg/github.svg" alt="My GitHub account" />
+        </a>
+      </div>
+    </section>
+
+    <footer>
+      <p>Built By HUE Engineers</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Hue Games.Store</title>
+  </head>
+  <body>
+    <div class="container"></div>
+    <header>
+      <img src="assets/svg/logo.svg" alt="logo" />
+      <nav class="navigation">
+       <ul>
+        <li><a href="#contactMe">Contact</a></li>
+         </nav>
+      <!-- أيقونة السلة -->
+      <div class="cart">
+        <a href="#" id="cart">
+          <img src="assets/svg/cart.svg" alt="Cart" />
+          <span id="cartCount">0</span>
+        </a>
+      </div>
+    </header>
+
+    <!-- سلة المشتريات -->
+    <div id="cartModal" class="cartModal">
+      <div class="cartContent">
+        <h2>سلة المشتريات</h2>
+        <ul id="cartItems">
+          <!-- سيتم إضافة العناصر هنا بواسطة JavaScript -->
+        </ul>
+        <div class="cartTotal">
+          <p>الإجمالي: <span id="cartTotal">0</span> جنيه</p>
+        </div>
+        <button id="checkoutButton">إتمام الشراء</button>
+        <button id="closeCart">إغلاق</button>
+      </div>
+    </div>
+    <!-- نافذة طرق الدفع -->
+<div id="paymentModal" class="paymentModal">
+  <div class="paymentContent">
+    <h2>اختر طريقة الدفع</h2>
+    <ul>
+      <li><button onclick="payWithVisaCard()">دفع بالفيزا </button></li>
+      <li><button onclick="payWithTelda()">دفع بتيلدا </button></li>
+      <li><button onclick="payWithWallet()">دفع بمحفظة الكترونية </button></li>
+    </ul>
+    <button id="closePaymentModal">إغلاق</button>
+  </div>
+</div>
+        <section class="corner1" id="corner1">
+      <div class="corner1Container">
+        <div class="corner1Title">
+        </div>
+        <ul>
+          <li>
+            <a href="#" onclick="addToCart({ name: 'FC 26 : ', price: 3500})">
+              <img src="assets/imgs/fc26.webp" alt="FC 26 : " />
+            </a>
+          </li>
+          <li>
+            <a href="#" onclick="addToCart({ name: 'EA Play Pro Month : ', price: 500 })">
+              <img src="assets/imgs/ea play pro month.png" alt="EA Play Pro Month : " />
+            </a>
+          </li>
+          <li>
+            <a href="#" onclick="addToCart({ name: 'EA Play Pro YEAR : ', price: 2400 })">
+              <img src="assets/imgs/ea play pro year.png" alt="EA Play Pro YEAR : " />
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+    <section class="corner2" id="corner2">
+      <div class="corner2Container">
+        <div class="corner2Title">
+        </div>
+        <ul>
+          <li>
+            <a href="#" onclick="addToCart({ name: ' Fortnite 1000v : ', price: 380})">
+              <img src="assets/imgs/1000v.png" alt="Fortnite 1000v : " />
+            </a>
+          </li>
+          <li>
+            <a href="#" onclick="addToCart({ name: 'Fortnite 2800v : ', price: 970 })">
+              <img src="assets/imgs/2800v.png" alt="Fortnite 2800v : " />
+            </a>
+          </li>
+          <li>
+            <a href="#" onclick="addToCart({ name: 'Fortnite 5000v : ', price: 1530 })">
+              <img src="assets/imgs/5000v.png" alt="Fortnite 5000v : " />
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+    <section class="corner3" id="corner3">
+      <div class="corner3Container">
+        <div class="corner3Title">
+        </div>
+        <ul>
+          <li>
+            <a href="#" onclick="addToCart({ name: 'Fortnite 13500v : ', price: 3800})">
+              <img src="assets/imgs/13500v.png" alt="Fortnite 13500v : " />
+            </a>
+          </li>
+          <li>
+            <a href="#" onclick="addToCart({ name: 'Fortnite Crew Pack : ', price: 250 })">
+              <img src="assets/imgs/crew pack.png" alt="Fortnite Crew Pack : " />
+            </a>
+          </li>
+          <li>
+            <a href="#" onclick="addToCart({ name: 'Fortnite Starter Pack : ', price: 230 })">
+              <img src="assets/imgs/st pack.png" alt="Fortnite Starter Pack : " />
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+    <section class="corner4" id="corner4">
+      <div class="corner4Container">
+        <div class="corner4Title">
+        </div>
+        <ul>
+          <li>
+            <a href="#" onclick="addToCart({ name: 'God Of War : ', price: 2900 })">
+              <img src="assets/imgs/godofwar.webp" alt="God Of War : " />
+            </a>
+          </li>
+          <li>
+            <a href="#" onclick="addToCart({ name: 'Cyber Punk 2077 : ', price: 1950 })">
+              <img src="assets/imgs/cyberpunk.jpg" alt="Cyber Punk 2077 : " />
+            </a>
+          </li>
+          <li>
+            <a href="#" onclick="addToCart({ name: 'Gta v : ', price: 2050 })">
+              <img src="assets/imgs/gta v.jpg" alt="Gta v : " />
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+     <section class="contactContainer" id="contactMe">
+      <div class="contactTitle">
+        <h1 class="aboutName">Contact</h1>
+        <h1 class="aboutTitle">Me</h1>
+      </div>
+      <div class="contact">
+        <div class="emailAndPhone">
+          <img src="assets/svg/Email.svg" alt="email logo" />
+          <a href="mailto:elhellawy2006@gmail.com">
+            <h3>elhellawy2006@gmail.com</h3>
+          </a>
+        </div>
+        <div class="emailAndPhone">
+          <img src="assets/svg/phone.svg" alt="phone logo" />
+          <a href="Phonto:01020994187"></a>
+          <h3>+201020994187</h3>
+        </div>
+      </div>
+      <div class="socialMedia">
+        <a href="https://www.facebook.com/youssef.helawy.7/" target="_blank">
+          <img src="assets/svg/facebook.svg" alt="My Facebook account" />
+        </a>
+        <a href="https://github.com/youssefhellawy" target="_blank">
+          <img src="assets/svg/github.svg" alt="My GitHub account" />
+        </a>
+      </div>
+    </section>
+
+    <footer>
+      <p>Built By HUE Engineers</p>
+    </footer>
+
+
+
+
+
+
+     <script src="script.js"></script>
+  </body>
+</html>
