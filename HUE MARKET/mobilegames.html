@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Hue Games.Store</title>
+  </head>
+  <body>
+    <div class="container"></div>
+    <header>
+      <img src="assets/svg/logo.svg" alt="logo" />
+      <nav class="navigation">
+       <ul>
+        <li><a href="#contactMe">Contact</a></li>
+       </ul>
+      </nav>
+      <!-- Search Bar -->
+      <div class="search-container">
+        <input id="searchInput" type="search" placeholder="Search games..." aria-label="Search games" />
+        <button id="searchButton" aria-label="Search">Search</button>
+      </div>
+      <!-- أيقونة السلة -->
+      <div class="cart">
+        <a href="#" id="cart">
+          <img src="assets/svg/cart.svg" alt="Cart" />
+          <span id="cartCount">0</span>
+        </a>
+      </div>
+    </header>
+
+    <!-- سلة المشتريات -->
+    <div id="cartModal" class="cartModal">
+      <div class="cartContent">
+        <h2>سلة المشتريات</h2>
+        <ul id="cartItems">
+          <!-- سيتم إضافة العناصر هنا بواسطة JavaScript -->
+        </ul>
+        <div class="cartTotal">
+          <p>الإجمالي: <span id="cartTotal">0</span> جنيه</p>
+        </div>
+        <button id="checkoutButton">إتمام الشراء</button>
+        <button id="closeCart">إغلاق</button>
+      </div>
+    </div>
+    <!-- نافذة طرق الدفع -->
+<div id="paymentModal" class="paymentModal">
+  <div class="paymentContent">
+    <h2>اختر طريقة الدفع</h2>
+    <ul>
+      <li><button onclick="payWithVisaCard()">دفع بالفيزا </button></li>
+      <li><button onclick="payWithTelda()">دفع بتيلدا </button></li>
+      <li><button onclick="payWithWallet()">دفع بمحفظة الكترونية </button></li>
+    </ul>
+    <button id="closePaymentModal">إغلاق</button>
+  </div>
+</div>
+        <section class="corner1" id="corner1">
+      <div class="corner1Container">
+        <div class="corner1Title">
+        </div>
+        <ul>
+          <li>
+            <a href="#" onclick="showProductModal({ name: 'Pubg 60Uc : ', price: 60}, this); return false;">
+              <img src="assets/imgs/60uc.png" alt="Pubg 60Uc : " />
+            </a>
+          </li>
+          <li>
+            <a href="#" onclick="showProductModal({ name: 'Pubg 325Uc : ', price: 270 }, this); return false;">
+              <img src="assets/imgs/325uc.png" alt="Pubg 325Uc : " />
+            </a>
+          </li>
+          <li>
+            <a href="#" onclick="showProductModal({ name: 'Pubg 660Uc : ', price: 500 }, this); return false;">
+              <img src="assets/imgs/660uc.png" alt="Pubg 660Uc : " />
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+    <section class="corner2" id="corner2">
+      <div class="corner2Container">
+        <div class="corner2Title">
+        </div>
+        <ul>
+          <li>
+            <a href="#" onclick="showProductModal({ name: 'Pubg 1800Uc : ', price: 1200}, this); return false;">
+              <img src="assets/imgs/1800uc.png" alt="Pubg 1800Uc : " />
+            </a>
+          </li>
+          <li>
+            <a href="#" onclick="showProductModal({ name: 'Pubg 3850Uc : ', price: 2350 }, this); return false;">
+              <img src="assets/imgs/3850uc.png" alt="Pubg 3850Uc : " />
+            </a>
+          </li>
+          <li>
+            <a href="#" onclick="showProductModal({ name: 'Pubg 8100Uc : ', price: 4600 }, this); return false;">
+              <img src="assets/imgs/8100uc.png" alt="Pubg 8100Uc : " />
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+    <section class="corner3" id="corner3">
+      <div class="corner3Container">
+        <div class="corner3Title">
+        </div>
+        <ul>
+          <li>
+            <a href="#" onclick="showProductModal({ name: 'Free Fire 530D : ', price: 250}, this); return false;">
+              <img src="assets/imgs/530d.png" alt="Free Fire 530D : " />
+            </a>
+          </li>
+          <li>
+            <a href="#" onclick="showProductModal({ name: 'Free Fire 1080D : ', price: 480 }, this); return false;">
+              <img src="assets/imgs/1080d.png" alt="Free Fire 1080D : " />
+            </a>
+          </li>
+          <li>
+            <a href="#" onclick="showProductModal({ name: 'Free Fire 2200D : ', price: 950 }, this); return false;">
+              <img src="assets/imgs/2200d.png" alt="Free Fire 2200D : " />
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+    <section class="corner4" id="corner4">
+      <div class="corner4Container">
+        <div class="corner4Title">
+        </div>
+        <ul>
+          <li>
+            <a href="#" onclick="showProductModal({ name: 'Pes mobile 260G : ', price: 100 }, this); return false;">
+              <img src="assets/imgs/260g.jpg" alt="Pes mobile 260G :" />
+            </a>
+          </li>
+          <li>
+            <a href="#" onclick="showProductModal({ name: 'Pes mobile 840G : ', price: 370 }, this); return false;">
+              <img src="assets/imgs/840g.jpg" alt="Pes mobile 840G :" />
+            </a>
+          </li>
+          <li>
+            <a href="#" onclick="showProductModal({ name: 'Pes mobile 3430G : ', price: 1330 }, this); return false;">
+              <img src="assets/imgs/3430g.jpg" alt="Pes mobile 3430G :" />
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+     <section class="contactContainer" id="contactMe">
+      <div class="contactTitle">
+        <h1 class="aboutName">Contact</h1>
+        <h1 class="aboutTitle">Me</h1>
+      </div>
+      <div class="contact">
+        <div class="emailAndPhone">
+          <img src="assets/svg/Email.svg" alt="email logo" />
+          <a href="mailto:elhellawy2006@gmail.com">
+            <h3>elhellawy2006@gmail.com</h3>
+          </a>
+        </div>
+        <div class="emailAndPhone">
+          <img src="assets/svg/phone.svg" alt="phone logo" />
+          <a href="Phonto:01020994187"></a>
+          <h3>+201020994187</h3>
+        </div>
+      </div>
+      <div class="socialMedia">
+        <a href="https://www.facebook.com/youssef.helawy.7/" target="_blank">
+          <img src="assets/svg/facebook.svg" alt="My Facebook account" />
+        </a>
+        <a href="https://github.com/youssefhellawy" target="_blank">
+          <img src="assets/svg/github.svg" alt="My GitHub account" />
+        </a>
+      </div>
+    </section>
+
+    <footer>
+      <p>Built By HUE Engineers</p>
+    </footer>
+
+
+
+
+
+
+    <script src="script.js"></script>
+      <script src="searchbar.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const h = location.hash;
+        if (!h) return;
+        const id = h.slice(1);
+        const sec = document.getElementById(id);
+        if (!sec) return;
+        const target = sec.querySelector('ul li') || sec;
+        target.classList.add('search-highlight');
+        target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        setTimeout(() => target.classList.remove('search-highlight'), 2500);
+      });
+    </script>
+  </body>
+</html>

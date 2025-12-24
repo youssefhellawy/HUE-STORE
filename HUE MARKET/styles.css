@@ -1,0 +1,1095 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background-color: #0a0a12;
+  color: #d6d6e7;
+}
+
+/* ===== Header & Navigation ===== */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0rem auto;
+  max-width: 3000px;
+}
+
+.navigation ul {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  list-style: none;
+  gap: 1rem;
+}
+
+.navigation a {
+  text-decoration: none;
+  color: #7b2ff7;
+  transition: 0.3s;
+  display: inline-block;
+  padding: 0.25rem 0;
+}
+
+.navigation a:hover {
+  color: #ff4ac8;
+  text-shadow: 0 0 10px #ff4ac8;
+}
+
+/* تصميم النموذج */
+.loginForm {
+    text-align: center;
+    margin-top: 30px;
+}
+
+h2 {
+    font-size: 28px;
+    color: #883deb;
+}
+
+/* تصميم الأزرار */
+button {
+    background-color: #4CAF50; /* اللون الأخضر */
+    color: rgb(0, 0, 0);
+    border: none;
+    padding: 16px 22px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    margin: 10px 0;
+    cursor: pointer;
+    border-radius: 14px; /* جعل الزوايا مدورة */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* عند التمرير فوق الزر */
+button:hover {
+    background-color: #45a049; /* تغيير اللون إلى الأخضر الداكن */
+    transform: scale(1.05); /* تكبير الزر قليلاً عند التمرير */
+}
+
+/* الزر "رجوع إلى الصفحة الرئيسية" */
+#backToHome {
+    background-color: #bd00ad; /* اللون الأحمر */
+}
+
+#backToHome:hover {
+    background-color: #0400ec; /* اللون الأحمر الداكن */
+}
+
+/* زر "تسجيل الدخول" */
+button[type="submit"] {
+    background-color: #0534cf; /* اللون الأزرق */
+}
+
+button[type="submit"]:hover {
+    background-color: #007bb5; /* اللون الأزرق الداكن */
+}
+/* تصميم نافذة طرق الدفع */
+.paymentModal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+}
+
+.paymentContent {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  max-width: 400px;
+  width: 100%;
+}
+
+.paymentContent button {
+  margin: 10px;
+  padding: 10px 20px;
+  background-color: #4602ff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.paymentContent button:hover {
+  background-color: #007bb5;
+}
+
+#closePaymentModal {
+  background-color: #ff4ac8;
+}
+
+#closePaymentModal:hover {
+  background-color: #0400ec;
+}
+
+
+.cart {
+  position: relative; /* اجعل الحاوية تحتوي على سياق موقع للصورة والعدد */
+}
+
+.cart a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.cart img {
+  width: 50px; /* حجم الصورة */
+  height: 50px;
+  margin-right: 50px; /* المسافة بين الصورة والنص */
+}
+
+#cartCount {
+  position: absolute; /* وضع الرقم فوق الصورة */
+  top: 0; /* تحديد المسافة من أعلى */
+  right: 50px; /* تحديد المسافة من اليمين */
+  font-size: 14px; /* تغيير الحجم بحيث يكون مناسبًا فوق الصورة */
+  color: #fff; /* يمكن تغيير اللون حسب الحاجة */
+  background-color: #000000; /* لون الخلفية إذا كنت تريد تمييز الرقم */
+  border-radius: 50%; /* لجعل الرقم يظهر بشكل دائري */
+  width: 20px; /* عرض الدائرة */
+  height: 20px; /* ارتفاع الدائرة */
+  display: flex;
+  align-items: center;
+  justify-content: center; /* لضبط الرقم في منتصف الدائرة */
+}
+
+/* ===== Cart Modal ===== */
+.cartModal {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 300px;
+  height: 100%;
+  background-color: rgb(34, 2, 70);
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  z-index: 1000;
+  overflow-y: auto;
+}
+
+.cartModal .cartItem {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.cartModal .cartItem span {
+  font-size: 20px;
+}
+
+#cartTotal {
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+#checkoutButton, #closeCart {
+  background-color: #4602ff;
+  color: rgb(0, 0, 0);
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+#closeCart {
+  background-color: #4602ff;
+}
+
+/* ===== Hero Section ===== */
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 5rem auto;
+  max-width: 1150px;
+  position: relative;
+}
+
+.arrow {
+  position: absolute;
+  transform: translateX(-5.5rem) translateY(1.5rem);
+}
+
+.heroSub {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.name {
+  font-size: 3rem;
+  color: #d6d6e7;
+  text-shadow: 0 0 15px #7b2ff7;
+}
+
+.title {
+  font-size: 4rem;
+  background: linear-gradient(90deg, #7b2ff7, #1e90ff, #ff4ac8);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+.heroBtns {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.hireMe {
+  background: linear-gradient(90deg, #ff4ac8, #7b2ff7);
+  color: #ffffff;
+  border-radius: 24px;
+  text-decoration: none;
+  padding: 0.5rem 1.5rem;
+  text-shadow: 0px 4px 8px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 0 15px rgba(255, 74, 200, 0.6);
+  transition: 0.3s;
+}
+
+.hireMe:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px rgba(255, 74, 200, 0.9);
+}
+
+
+/* ===== About Us ===== */
+.aboutUs {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 5rem auto;
+  max-width: 1200px;
+  gap: 10rem;
+}
+
+.textContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.textTitle {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 2rem;
+}
+
+.aboutName {
+  color: #ffffff;
+}
+
+.aboutTitle {
+  color: #7b2ff7;
+}
+
+.aboutUsPar {
+  text-align: justify;
+  color: rgba(214, 214, 231, 0.75);
+}
+
+/* ===== Works Section ===== */
+.RecentGames {
+  background-image: url("assets/imgs/background.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /* يجعل الخلفية ثابتة أثناء التمرير */
+  padding: 10rem 10rem;
+  margin: 0rem 0rem;
+  margin-bottom: 0rem;
+  border: none; /* إزالة أي حدود */
+}
+
+.RecentGamesContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: left;
+  margin: 0rem auto;
+  max-width: 1200px;
+}
+
+.RecentGamesTitle {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  gap: 5px;
+  font-size: 2rem;
+  color: #ff4ac8;
+  text-shadow: 0 0 10px #ff4ac8;
+}
+
+.RecentGames ul {
+  display: flex;
+  list-style-type: none;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.RecentGames li {
+  border-radius: 16px;
+  background-color: rgba(123, 47, 247, 0.1);
+  backdrop-filter: blur(6px);
+  padding: 1rem 3rem;
+  border: 1px solid rgba(123, 47, 247, 0.3);
+  transition: 0.3s;
+}
+
+.RecentGames li:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(123, 47, 247, 0.4);
+}
+
+.RecentGames li img {
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+  transition: transform 0.3s;
+}
+
+.RecentGames li img:hover {
+  transform: scale(1.15);
+}
+
+/* ===== PlayStation Games Section ===== */
+.Best-selling {
+  background-image: url("assets/imgs/background.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /* يجعل الخلفية ثابتة أثناء التمرير */
+  padding: 10rem 10rem;
+  margin: 0rem 0rem;
+  margin-top: 0rem;
+  border: none; /* إزالة أي حدود */
+}
+
+.Best-sellingContainer  {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: left;
+  margin: 0rem auto;
+  max-width: 1200px;
+  font-size: 2.5rem;
+  color: #7b2ff7; /* نفس اللون البنفسجي المستخدم في عناصر أخرى */
+  margin-bottom: 3rem;
+}
+.Best-sellingTitle {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  gap: 5px;
+  font-size: 2rem;
+  color: #ff4ac8;
+  text-shadow: 0 0 10px #ff4ac8;
+}
+.Best-selling ul {
+  display: flex;
+  list-style-type: none;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.Best-sellingContainer li {
+  border-radius: 16px;
+  background-color: rgba(123, 47, 247, 0.1);
+  backdrop-filter: blur(6px);
+  padding: 1rem 3rem;
+  border: 1px solid rgba(123, 47, 247, 0.3);
+  transition: 0.3s;
+}
+
+.Best-sellingContainer li:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(123, 47, 247, 0.4);
+}
+
+.Best-sellingContainer li img {
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+  transition: transform 0.3s;
+}
+
+.Best-selling li img:hover {
+  transform: scale(1.15);
+}
+
+/* ===== Contact Section ===== */
+.contactContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  gap: 2rem;
+  margin: 2rem auto;
+  max-width: 1200px;
+}
+
+.contactTitle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  margin-bottom: 10px;
+  font-size: 2rem;
+  color: #1e90ff;
+  text-shadow: 0 0 10px #1e90ff;
+}
+
+.contact {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 5rem;
+  gap: 20rem;
+}
+
+.contact h3,
+.contact a {
+  color: #d6d6e7;
+  text-decoration: none;
+}
+
+.emailAndPhone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.socialMedia {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+}
+
+.socialMedia a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50px;
+  background: linear-gradient(135deg, rgba(123, 47, 247, 0.3), rgba(255, 74, 200, 0.3));
+  backdrop-filter: blur(8px);
+  padding: 1rem;
+  transition: 0.3s;
+}
+
+.socialMedia a:hover {
+  box-shadow: 0 0 15px rgba(255, 74, 200, 0.6);
+  transform: scale(1.1);
+}
+
+.socialMedia img {
+  width: 24px;
+  height: 24px;
+}
+
+footer {
+  color: #8888aa;
+  padding: 2rem;
+  text-align: center;
+  border-top: 1px solid rgba(123, 47, 247, 0.3);
+  margin-top: 3rem;
+}
+.corner1 {
+   background-image: url("assets/imgs/background.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /* يجعل الخلفية ثابتة أثناء التمرير */
+  padding: 10rem 10rem;
+  margin: 0rem 0rem;
+  margin-top: 0rem;
+  border: none; /* إزالة أي حدود */
+}
+
+.corner1Container  {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: left;
+  margin: 0rem auto;
+  max-width: 1200px;
+  font-size: 2.5rem;
+  color: #7b2ff7; /* نفس اللون البنفسجي المستخدم في عناصر أخرى */
+  margin-bottom: 3rem;
+}
+.corner1 ul {
+  display: flex;
+  list-style-type: none;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.corner1Container li {
+  border-radius: 16px;
+  background-color: rgba(123, 47, 247, 0.1);
+  backdrop-filter: blur(6px);
+  padding: 1rem 3rem;
+  border: 1px solid rgba(123, 47, 247, 0.3);
+  transition: 0.3s;
+}
+
+.corner1Container li:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(123, 47, 247, 0.4);
+}
+
+.corner1Container li img {
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+  transition: transform 0.3s;
+}
+
+.corner1 li img:hover {
+  transform: scale(1.15);
+}
+.corner2 {
+  background-image: url("assets/imgs/background.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /* يجعل الخلفية ثابتة أثناء التمرير */
+  padding: 10rem 10rem;
+  margin: 0rem 0rem;
+  margin-top: 0rem;
+  border: none; /* إزالة أي حدود */
+}
+
+.corner2Container  {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: left;
+  margin: 0rem auto;
+  max-width: 1200px;
+  font-size: 2.5rem;
+  color: #7b2ff7; /* نفس اللون البنفسجي المستخدم في عناصر أخرى */
+  margin-bottom: 3rem;
+}
+.corner2 ul {
+  display: flex;
+  list-style-type: none;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.corner2Container li {
+  border-radius: 16px;
+  background-color: rgba(123, 47, 247, 0.1);
+  backdrop-filter: blur(6px);
+  padding: 1rem 3rem;
+  border: 1px solid rgba(123, 47, 247, 0.3);
+  transition: 0.3s;
+}
+
+.corner2Container li:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(123, 47, 247, 0.4);
+}
+
+.corner2Container li img {
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+  transition: transform 0.3s;
+}
+
+.corner2 li img:hover {
+  transform: scale(1.15);
+}
+.corner3 {
+  background-image: url("assets/imgs/background.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /* يجعل الخلفية ثابتة أثناء التمرير */
+  padding: 10rem 10rem;
+  margin: 0rem 0rem;
+  margin-top: 0rem;
+  border: none; /* إزالة أي حدود */
+}
+
+.corner3Container  {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: left;
+  margin: 0rem auto;
+  max-width: 1200px;
+  font-size: 2.5rem;
+  color: #7b2ff7; /* نفس اللون البنفسجي المستخدم في عناصر أخرى */
+  margin-bottom: 3rem;
+}
+.corner3 ul {
+  display: flex;
+  list-style-type: none;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.corner3Container li {
+  border-radius: 16px;
+  background-color: rgba(123, 47, 247, 0.1);
+  backdrop-filter: blur(6px);
+  padding: 1rem 3rem;
+  border: 1px solid rgba(123, 47, 247, 0.3);
+  transition: 0.3s;
+}
+
+.corner3Container li:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(123, 47, 247, 0.4);
+}
+
+.corner3Container li img {
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+  transition: transform 0.3s;
+}
+
+.corner3 li img:hover {
+  transform: scale(1.15);
+}
+.corner4 {
+  background-image: url("assets/imgs/background.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /* يجعل الخلفية ثابتة أثناء التمرير */
+  padding: 10rem 10rem;
+  margin: 0rem 0rem;
+  margin-top: 0rem;
+  border: none; /* إزالة أي حدود */
+}
+
+.corner4Container  {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: left;
+  margin: 0rem auto;
+  max-width: 1200px;
+  font-size: 2.5rem;
+  color: #7b2ff7; /* نفس اللون البنفسجي المستخدم في عناصر أخرى */
+  margin-bottom: 3rem;
+}
+.corner4 ul {
+  display: flex;
+  list-style-type: none;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.corner4Container li {
+  border-radius: 16px;
+  background-color: rgba(123, 47, 247, 0.1);
+  backdrop-filter: blur(6px);
+  padding: 1rem 3rem;
+  border: 1px solid rgba(123, 47, 247, 0.3);
+  transition: 0.3s;
+}
+
+.corner4Container li:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(123, 47, 247, 0.4);
+}
+
+.corner4Container li img {
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+  transition: transform 0.3s;
+}
+
+.corner4 li img:hover {
+  transform: scale(1.15);
+}
+@media (max-width: 1023px) {
+  /* تحسين الهيدر */
+  header {
+    flex-direction: column;  /* جعل العناصر تظهر بشكل عمودي */
+    align-items: center;  /* توسيط العناصر */
+    margin: 0;  /* إزالة الهوامش الزائدة */
+    padding: 0;  /* إزالة الحواف الزائدة */
+    width: 100vw;  /* تأكيد أن العرض 100% من عرض الشاشة */
+    overflow-x: hidden;  /* إزالة التمرير الأفقي */
+  }
+
+  .navigation ul {
+    flex-direction: column;  /* جعل القوائم تظهر بشكل عمودي */
+    align-items: center;
+    gap: 1rem;  /* تقليل المسافات بين العناصر */
+    list-style: none;  /* إزالة نقاط القائمة لمظهر أفضل */
+    width: 100%;  /* تأكيد أن القائمة تغطي العرض الكامل */
+    margin: 0;  /* إزالة الهوامش */
+  }
+
+  .navigation a {
+    font-size: 1.2rem;  /* زيادة قليلاً لتحسين القراءة */
+    color: #7b2ff7; /* تثبيت اللون */
+    text-decoration: none;  /* إزالة الخط السفلي الافتراضي */
+    transition: color 0.3s ease;  /* إضافة انتقال سلس */
+  }
+
+  .navigation a:hover {
+    color: #ff4ac8;
+    text-shadow: 0 0 10px #ff4ac8;
+  }
+
+  /* ===== قسم البطل (Hero Section) ===== */
+  .hero {
+    flex-direction: column;  /* ترتيب العناصر بشكل عمودي */
+    align-items: center;  /* توسيط المحتوى */
+    gap: 1rem;  /* تقليل المسافة بين العناصر */
+    padding: 1rem;  /* إضافة حواف لتجنب الالتصاق بالحواف */
+    width: 100vw;  /* عرض الشاشة بالكامل */
+    overflow-x: hidden;  /* إزالة التمرير الأفقي */
+  }
+
+  .heroImg {
+    width: 100%;  /* عرض الصورة 100% من الشاشة */
+    max-width: 100%;  /* الحد الأقصى للعرض */
+    height: auto;  /* الحفاظ على النسبة */
+    object-fit: cover;  /* تحسين عرض الصورة دون تشويه */
+    margin-bottom: 1rem;  /* تقليل المسافة أسفل الصورة */
+  }
+
+  .name, .title {
+    font-size: 1.6rem;  /* تقليل الحجم ليتناسب مع الهواتف */
+    text-align: center;
+    text-shadow: 0 0 15px #7b2ff7;
+  }
+
+  .heroBtns {
+    flex-direction: column;  /* ترتيب الأزرار عموديًا */
+    gap: 1rem;  /* تقليل المسافة بين الأزرار */
+    width: 100%;  /* جعل الأزرار تأخذ العرض الكامل */
+  }
+
+  .hireMe {
+    padding: 0.75rem 2rem;  /* زيادة قليلاً لتحسين اللمس */
+    font-size: 1.2rem;  /* زيادة قليلاً */
+    border: none;  /* إزالة الحدود الافتراضية */
+    border-radius: 8px;  /* إضافة زوايا مستديرة */
+    cursor: pointer;  /* تحسين التفاعل */
+  }
+
+  /* ===== قسم "حولنا" ===== */
+  .aboutUs {
+    flex-direction: column;  /* ترتيب المحتوى بشكل عمودي */
+    align-items: center;
+    gap: 2rem;
+    margin: 2rem 0;
+    padding: 1rem;
+    width: 100vw;  /* تأكيد أن العرض 100% من عرض الشاشة */
+  }
+
+  .aboutUsImg {
+    width: 90%;  /* تقليل عرض الصورة لتتناسب مع الشاشة */
+    max-width: 300px;
+    height: auto;
+    object-fit: cover;  /* تحسين الصورة */
+  }
+
+  .aboutName, .aboutTitle {
+    font-size: 1.6rem;  /* تقليل الحجم ليتناسب مع الهواتف */
+  }
+
+  .aboutUsPar {
+    font-size: 1.3rem;  /* زيادة قليلاً للقراءة */
+    color: rgba(214, 214, 231, 0.75);
+    line-height: 1.6;
+  }
+
+  /* ===== إزالة التمرير الأفقي */
+  body, html {
+    overflow-x: hidden;  /* إزالة التمرير الأفقي تمامًا */
+    width: 100%;  /* تأكيد أن العرض كامل */
+  }
+
+  /* ===== قسم الألعاب (Recent Games & Best-selling) ===== */
+  .RecentGames, .Best-selling {
+    padding: 10rem 0rem;  /* تقليل الحواف */
+    margin-bottom: 0rem;
+  }
+
+  .RecentGamesContainer, .Best-sellingContainer {
+    flex-direction: column;  /* ترتيب العناصر بشكل عمودي */
+    align-items: center;
+    gap: 1rem;
+    width: 100vw;  /* جعل العناصر تأخذ عرض الشاشة بالكامل */
+  }
+
+  .RecentGamesTitle, .Best-sellingTitle {
+    font-size: 1.8rem;  /* زيادة قليلاً (كان 1.6rem) */
+    color: #ff4ac8;
+    text-shadow: 0 0 10px #ff4ac8;
+  }
+
+  .RecentGames li, .Best-sellingContainer li {
+    width: 90%;  /* جعل العناصر تأخذ عرض الشاشة */
+    padding: 1rem 1.5rem;  /* تقليل الحواف الداخلية */
+    font-size: 1.3rem;
+    margin: 0.5rem 0;
+    border-radius: 16px;
+    background-color: rgba(123, 47, 247, 0.1);
+    backdrop-filter: blur(6px);
+    transition: transform 0.3s ease;
+    box-sizing: border-box;
+  }
+
+  .RecentGames li img, .Best-sellingContainer li img {
+    width: 100%;  /* عرض الصورة 100% */
+    height: auto;  /* الحفاظ على النسبة الأصلية */
+    object-fit: cover;
+    margin-bottom: 0rem;
+  }
+
+  .RecentGames li:hover, .Best-sellingContainer li:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(123, 47, 247, 0.4);
+  }
+
+  /* ===== قسم الاتصال ===== */
+  .contactContainer {
+    padding: 1rem;  /* تقليل الحواف الداخلية */
+  }
+
+  .contactTitle {
+    font-size: 1.6rem;  /* تقليل حجم العنوان ليتناسب مع الشاشات الصغيرة */
+  }
+
+  .contact {
+    flex-direction: column;  /* ترتيب العناصر عموديًا */
+    gap: 2rem;
+    margin-right: 0;  /* إزالة الهوامش الكبيرة */
+  }
+
+  .emailAndPhone {
+    flex-direction: column;  /* ترتيب الأيقونات عموديًا */
+    gap: 0rem;  /* تقليل المسافة بين العناصر */
+    font-size: 1.2rem;  /* تقليل الحجم ليكون مناسباً للهاتف */
+  }
+
+  .socialMedia {
+    gap: 2rem;  /* تقليل الفجوة بين الأيقونات */
+  }
+
+  .socialMedia a {
+    padding: 0.8rem;  /* تقليل حجم الأزرار لتناسب الهاتف */
+  }
+
+  footer {
+    font-size: 1rem;  /* تقليل حجم النص في الفوتر */
+  }
+  /* ===== أقسام الـ corner ===== */
+  .corner1, .corner2, .corner3, .corner4 {
+   padding: 1rem ;  /* تقليل الحواف */
+    margin-bottom: 0rem;
+  }
+
+  .corner1Container, .corner2Container, .corner3Container, .corner4Container {
+    max-width: 100%;
+    padding: 4rem 0;  /* تم تعديلها إلى 4rem 0 */
+    box-sizing: border-box;
+  }
+
+  .corner1Container li:hover, .corner2Container li:hover, .corner3Container li:hover, .corner4Container li:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(123, 47, 247, 0.4);
+  }
+
+  .corner1Container li, .corner2Container li, .corner3Container li, .corner4Container li {
+   width: 90%;  /* جعل العناصر تأخذ عرض الشاشة */
+    padding: 1rem 1.5rem;  /* تقليل الحواف الداخلية */
+    font-size: 1.3rem;
+    margin: 0.2rem ;
+    border-radius: 16px;
+    background-color: rgba(123, 47, 247, 0.1);
+    backdrop-filter: blur(6px);
+    transition: transform 0.3s ease;
+    box-sizing: border-box;
+  }
+
+  .corner1Container li img,
+  .corner2Container li img,
+  .corner3Container li img,
+  .corner4Container li img {
+    width: 100%;  /* عرض الصورة 100% */
+    height: auto;  /* الحفاظ على النسبة الأصلية */
+    object-fit: cover;
+    margin-bottom: 0rem;
+  }
+}
+
+/* Search bar styles */
+.search-container {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  margin-left: 1rem;
+}
+
+.search-toggle {
+  margin-left: 0.75rem;
+  color: #d6d6e7;
+  font-size: 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+.search-toggle input[type="checkbox"] {
+  width: 14px;
+  height: 14px;
+}
+
+/* Product modal styles */
+.product-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  justify-content: center;
+  align-items: center;
+  z-index: 3000;
+}
+.product-modal-content {
+  background: #0f0b1a;
+  border-radius: 14px;
+  padding: 18px;
+  max-width: 900px;
+  width: 90%;
+  color: #d6d6e7;
+}
+.product-modal-close {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 26px;
+  float: right;
+  cursor: pointer;
+}
+.product-modal-body { display:flex; gap:1rem; align-items:center; }
+.product-modal-image { width:260px; height:160px; object-fit:cover; border-radius:8px; }
+.product-modal-info { flex:1 }
+.product-modal-name { margin:0 0 8px 0; color: #fff }
+.product-modal-price { margin:0 0 12px 0; color: #ffcc66 }
+.product-modal-actions { display:flex; gap:0.6rem }
+.product-add-button, .product-cancel-button { padding:8px 12px; border-radius:10px; border:none; cursor:pointer }
+.product-add-button { background: linear-gradient(90deg,#7b2ff7,#ff4ac8); color:#fff }
+.product-cancel-button { background:#444; color:#fff }
+
+#searchInput {
+  padding: 0.5rem 1rem;
+  border-radius: 24px;
+  border: 1px solid rgba(123, 47, 247, 0.2);
+  background: rgba(255, 255, 255, 0.03);
+  color: #d6d6e7;
+  outline: none;
+  width: 220px;
+}
+
+#searchInput::placeholder {
+  color: rgba(214, 214, 231, 0.5);
+}
+
+#searchButton {
+  padding: 0.45rem 0.75rem;
+  border-radius: 20px;
+  background: linear-gradient(90deg, #7b2ff7, #ff4ac8);
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+}
+
+#searchButton:hover {
+  opacity: 0.95;
+  transform: translateY(-1px);
+}
+
+@media (max-width: 1023px) {
+  .search-container { margin: 1rem 0; width: 100%; justify-content: center; }
+  #searchInput { width: 60vw; }
+}
+
+/* highlight for navigated item */
+.search-highlight {
+  /* pulse 3 times (0.8s each) so glow appears/disappears repeatedly */
+  animation: highlight-pulse 0.8s ease-in-out 0s 3;
+  animation-fill-mode: both;
+  box-shadow: 0 6px 30px rgba(123,47,247,0.45);
+  transform: translateY(-6px);
+  border-radius: 12px;
+}
+
+@keyframes highlight-pulse {
+  0% { box-shadow: 0 0 0 rgba(123,47,247,0); }
+  50% { box-shadow: 0 12px 40px rgba(123,47,247,0.45); }
+  100% { box-shadow: 0 0 0 rgba(123,47,247,0); }
+}
+
+/* Stronger glow used when navigating from search to other pages */
+.glow {
+  /* pulse 3 times: 0.8s each -> ~2.4s total */
+  animation: glow-pulse 0.8s ease-in-out 0s 3;
+  animation-fill-mode: both;
+  box-shadow: 0 10px 50px rgba(123,47,247,0.7), 0 0 80px rgba(123,47,247,0.35) !important;
+  transform: translateY(-6px) scale(1.02) !important;
+  border-radius: 12px;
+}
+
+@keyframes glow-pulse {
+  0% { box-shadow: 0 0 0 rgba(123,47,247,0); }
+  40% { box-shadow: 0 18px 60px rgba(123,47,247,0.8), 0 0 90px rgba(123,47,247,0.45); }
+  100% { box-shadow: 0 0 0 rgba(123,47,247,0); }
+}
+
+/* Suggestions box */
+.search-suggestions {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  width: max(220px, 220px);
+  background: rgba(10,10,18,0.98);
+  border: 1px solid rgba(123,47,247,0.12);
+  border-radius: 10px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+  z-index: 2000;
+  max-height: 260px;
+  overflow: auto;
+  padding: 6px 6px;
+}
+
+.search-suggestion {
+  padding: 8px 10px;
+  border-radius: 8px;
+  color: #d6d6e7;
+  cursor: pointer;
+}
+.search-suggestion:hover,
+.search-suggestion.selected {
+  background: linear-gradient(90deg, rgba(123,47,247,0.12), rgba(255,74,200,0.08));
+  color: #fff;
+}
