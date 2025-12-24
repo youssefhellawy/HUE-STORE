@@ -14,6 +14,11 @@
        <ul>
         <li><a href="#contactMe">Contact</a></li>
          </nav>
+      <!-- Search Bar -->
+      <div class="search-container">
+        <input id="searchInput" type="search" placeholder="Search games..." aria-label="Search games" />
+        <button id="searchButton" aria-label="Search">Search</button>
+      </div>
       <!-- أيقونة السلة -->
       <div class="cart">
         <a href="#" id="cart">
@@ -55,17 +60,17 @@
         </div>
         <ul>
           <li>
-            <a href="#" onclick="addToCart({ name: 'FC 26 : ', price: 3500})">
+            <a href="#" onclick="showProductModal({ name: 'FC 26 : ', price: 3500}, this); return false;">
               <img src="assets/imgs/fc26.webp" alt="FC 26 : " />
             </a>
           </li>
           <li>
-            <a href="#" onclick="addToCart({ name: 'EA Play Pro Month : ', price: 500 })">
+            <a href="#" onclick="showProductModal({ name: 'EA Play Pro Month : ', price: 500 }, this); return false;">
               <img src="assets/imgs/ea play pro month.png" alt="EA Play Pro Month : " />
             </a>
           </li>
           <li>
-            <a href="#" onclick="addToCart({ name: 'EA Play Pro YEAR : ', price: 2400 })">
+            <a href="#" onclick="showProductModal({ name: 'EA Play Pro YEAR : ', price: 2400 }, this); return false;">
               <img src="assets/imgs/ea play pro year.png" alt="EA Play Pro YEAR : " />
             </a>
           </li>
@@ -78,17 +83,17 @@
         </div>
         <ul>
           <li>
-            <a href="#" onclick="addToCart({ name: ' Fortnite 1000v : ', price: 380})">
+            <a href="#" onclick="showProductModal({ name: ' Fortnite 1000v : ', price: 380}, this); return false;">
               <img src="assets/imgs/1000v.png" alt="Fortnite 1000v : " />
             </a>
           </li>
           <li>
-            <a href="#" onclick="addToCart({ name: 'Fortnite 2800v : ', price: 970 })">
+            <a href="#" onclick="showProductModal({ name: 'Fortnite 2800v : ', price: 970 }, this); return false;">
               <img src="assets/imgs/2800v.png" alt="Fortnite 2800v : " />
             </a>
           </li>
           <li>
-            <a href="#" onclick="addToCart({ name: 'Fortnite 5000v : ', price: 1530 })">
+            <a href="#" onclick="showProductModal({ name: 'Fortnite 5000v : ', price: 1530 }, this); return false;">
               <img src="assets/imgs/5000v.png" alt="Fortnite 5000v : " />
             </a>
           </li>
@@ -101,17 +106,17 @@
         </div>
         <ul>
           <li>
-            <a href="#" onclick="addToCart({ name: 'Fortnite 13500v : ', price: 3800})">
+            <a href="#" onclick="showProductModal({ name: 'Fortnite 13500v : ', price: 3800}, this); return false;">
               <img src="assets/imgs/13500v.png" alt="Fortnite 13500v : " />
             </a>
           </li>
           <li>
-            <a href="#" onclick="addToCart({ name: 'Fortnite Crew Pack : ', price: 250 })">
+            <a href="#" onclick="showProductModal({ name: 'Fortnite Crew Pack : ', price: 250 }, this); return false;">
               <img src="assets/imgs/crew pack.png" alt="Fortnite Crew Pack : " />
             </a>
           </li>
           <li>
-            <a href="#" onclick="addToCart({ name: 'Fortnite Starter Pack : ', price: 230 })">
+            <a href="#" onclick="showProductModal({ name: 'Fortnite Starter Pack : ', price: 230 }, this); return false;">
               <img src="assets/imgs/st pack.png" alt="Fortnite Starter Pack : " />
             </a>
           </li>
@@ -124,17 +129,17 @@
         </div>
         <ul>
           <li>
-            <a href="#" onclick="addToCart({ name: 'God Of War : ', price: 2900 })">
+            <a href="#" onclick="showProductModal({ name: 'God Of War : ', price: 2900 }, this); return false;">
               <img src="assets/imgs/godofwar.webp" alt="God Of War : " />
             </a>
           </li>
           <li>
-            <a href="#" onclick="addToCart({ name: 'Cyber Punk 2077 : ', price: 1950 })">
+            <a href="#" onclick="showProductModal({ name: 'Cyber Punk 2077 : ', price: 1950 }, this); return false;">
               <img src="assets/imgs/cyberpunk.jpg" alt="Cyber Punk 2077 : " />
             </a>
           </li>
           <li>
-            <a href="#" onclick="addToCart({ name: 'Gta v : ', price: 2050 })">
+            <a href="#" onclick="showProductModal({ name: 'Gta v : ', price: 2050 }, this); return false;">
               <img src="assets/imgs/gta v.jpg" alt="Gta v : " />
             </a>
           </li>
@@ -178,6 +183,20 @@
 
 
 
-     <script src="script.js"></script>
+    <script src="script.js"></script>
+      <script src="searchbar.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const h = location.hash;
+        if (!h) return;
+        const id = h.slice(1);
+        const sec = document.getElementById(id);
+        if (!sec) return;
+        const target = sec.querySelector('ul li') || sec;
+        target.classList.add('search-highlight');
+        target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        setTimeout(() => target.classList.remove('search-highlight'), 2500);
+      });
+    </script>
   </body>
 </html>

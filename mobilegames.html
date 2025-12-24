@@ -13,7 +13,13 @@
       <nav class="navigation">
        <ul>
         <li><a href="#contactMe">Contact</a></li>
-         </nav>
+       </ul>
+      </nav>
+      <!-- Search Bar -->
+      <div class="search-container">
+        <input id="searchInput" type="search" placeholder="Search games..." aria-label="Search games" />
+        <button id="searchButton" aria-label="Search">Search</button>
+      </div>
       <!-- أيقونة السلة -->
       <div class="cart">
         <a href="#" id="cart">
@@ -55,17 +61,17 @@
         </div>
         <ul>
           <li>
-            <a href="#" onclick="addToCart({ name: 'Pubg 60Uc : ', price: 60})">
+            <a href="#" onclick="showProductModal({ name: 'Pubg 60Uc : ', price: 60}, this); return false;">
               <img src="assets/imgs/60uc.png" alt="Pubg 60Uc : " />
             </a>
           </li>
           <li>
-            <a href="#" onclick="addToCart({ name: 'Pubg 325Uc : ', price: 270 })">
+            <a href="#" onclick="showProductModal({ name: 'Pubg 325Uc : ', price: 270 }, this); return false;">
               <img src="assets/imgs/325uc.png" alt="Pubg 325Uc : " />
             </a>
           </li>
           <li>
-            <a href="#" onclick="addToCart({ name: 'Pubg 660Uc : ', price: 500 })">
+            <a href="#" onclick="showProductModal({ name: 'Pubg 660Uc : ', price: 500 }, this); return false;">
               <img src="assets/imgs/660uc.png" alt="Pubg 660Uc : " />
             </a>
           </li>
@@ -78,17 +84,17 @@
         </div>
         <ul>
           <li>
-            <a href="#" onclick="addToCart({ name: 'Pubg 1800Uc : ', price: 1200})">
+            <a href="#" onclick="showProductModal({ name: 'Pubg 1800Uc : ', price: 1200}, this); return false;">
               <img src="assets/imgs/1800uc.png" alt="Pubg 1800Uc : " />
             </a>
           </li>
           <li>
-            <a href="#" onclick="addToCart({ name: 'Pubg 3850Uc : ', price: 2350 })">
+            <a href="#" onclick="showProductModal({ name: 'Pubg 3850Uc : ', price: 2350 }, this); return false;">
               <img src="assets/imgs/3850uc.png" alt="Pubg 3850Uc : " />
             </a>
           </li>
           <li>
-            <a href="#" onclick="addToCart({ name: 'Pubg 8100Uc : ', price: 4600 })">
+            <a href="#" onclick="showProductModal({ name: 'Pubg 8100Uc : ', price: 4600 }, this); return false;">
               <img src="assets/imgs/8100uc.png" alt="Pubg 8100Uc : " />
             </a>
           </li>
@@ -101,17 +107,17 @@
         </div>
         <ul>
           <li>
-            <a href="#" onclick="addToCart({ name: 'Free Fire 530D : ', price: 250})">
+            <a href="#" onclick="showProductModal({ name: 'Free Fire 530D : ', price: 250}, this); return false;">
               <img src="assets/imgs/530d.png" alt="Free Fire 530D : " />
             </a>
           </li>
           <li>
-            <a href="#" onclick="addToCart({ name: 'Free Fire 1080D : ', price: 480 })">
+            <a href="#" onclick="showProductModal({ name: 'Free Fire 1080D : ', price: 480 }, this); return false;">
               <img src="assets/imgs/1080d.png" alt="Free Fire 1080D : " />
             </a>
           </li>
           <li>
-            <a href="#" onclick="addToCart({ name: 'Free Fire 2200D : ', price: 950 })">
+            <a href="#" onclick="showProductModal({ name: 'Free Fire 2200D : ', price: 950 }, this); return false;">
               <img src="assets/imgs/2200d.png" alt="Free Fire 2200D : " />
             </a>
           </li>
@@ -124,17 +130,17 @@
         </div>
         <ul>
           <li>
-            <a href="#" onclick="addToCart({ name: 'Pes mobile 260G : ', price: 100 })">
+            <a href="#" onclick="showProductModal({ name: 'Pes mobile 260G : ', price: 100 }, this); return false;">
               <img src="assets/imgs/260g.jpg" alt="Pes mobile 260G :" />
             </a>
           </li>
           <li>
-            <a href="#" onclick="addToCart({ name: 'Pes mobile 840G : ', price: 370 })">
+            <a href="#" onclick="showProductModal({ name: 'Pes mobile 840G : ', price: 370 }, this); return false;">
               <img src="assets/imgs/840g.jpg" alt="Pes mobile 840G :" />
             </a>
           </li>
           <li>
-            <a href="#" onclick="addToCart({ name: 'Pes mobile 3430G : ', price: 1330 })">
+            <a href="#" onclick="showProductModal({ name: 'Pes mobile 3430G : ', price: 1330 }, this); return false;">
               <img src="assets/imgs/3430g.jpg" alt="Pes mobile 3430G :" />
             </a>
           </li>
@@ -178,6 +184,20 @@
 
 
 
-     <script src="script.js"></script>
+    <script src="script.js"></script>
+      <script src="searchbar.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const h = location.hash;
+        if (!h) return;
+        const id = h.slice(1);
+        const sec = document.getElementById(id);
+        if (!sec) return;
+        const target = sec.querySelector('ul li') || sec;
+        target.classList.add('search-highlight');
+        target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        setTimeout(() => target.classList.remove('search-highlight'), 2500);
+      });
+    </script>
   </body>
 </html>

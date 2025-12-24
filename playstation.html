@@ -13,7 +13,13 @@
       <nav class="navigation">
        <ul>
         <li><a href="#contactMe">Contact</a></li>
-         </nav>
+       </ul>
+      </nav>
+      <!-- Search Bar -->
+      <div class="search-container">
+        <input id="searchInput" type="search" placeholder="Search games..." aria-label="Search games" />
+        <button id="searchButton" aria-label="Search">Search</button>
+      </div>
       <!-- أيقونة السلة -->
       <div class="cart">
         <a href="#" id="cart">
@@ -55,17 +61,17 @@
         </div>
         <ul>
           <li>
-            <a href="#" onclick="addToCart({ name: 'FC 26 : ', price: 3500})">
+            <a href="#" onclick="showProductModal({ name: 'FC 26 : ', price: 3500}, this); return false;">
               <img src="assets/imgs/fc26.webp" alt="FC 26 : " />
             </a>
           </li>
           <li>
-            <a href="#" onclick="addToCart({ name: 'EA Play : ', price: 500 })">
+            <a href="#" onclick="showProductModal({ name: 'EA Play : ', price: 500 }, this); return false;">
               <img src="assets/imgs/ea.jpg" alt="EA Play Pro : " />
             </a>
           </li>
           <li>
-            <a href="#" onclick="addToCart({ name: 'Call Of Duty BlackOps 7 : ', price: 3450 })">
+            <a href="#" onclick="showProductModal({ name: 'Call Of Duty BlackOps 7 : ', price: 3450 }, this); return false;">
               <img src="assets/imgs/callofduty7.jpg" alt="Call Of Duty BlackOps 7 : " />
             </a>
           </li>
@@ -78,17 +84,17 @@
         </div>
         <ul>
           <li>
-            <a href="#" onclick="addToCart({ name: 'spiderman 2 : ', price: 3500})">
+            <a href="#" onclick="showProductModal({ name: 'spiderman 2 : ', price: 3500}, this); return false;">
               <img src="assets/imgs/spiderman2.jpg" alt="spiderman 2 : " />
             </a>
           </li>
           <li>
-            <a href="#" onclick="addToCart({ name: 'Need For Speed Heat : ', price: 2650 })">
+            <a href="#" onclick="showProductModal({ name: 'Need For Speed Heat : ', price: 2650 }, this); return false;">
               <img src="assets/imgs/needforspeedheat.jpg" alt="Need For Speed Heat : " />
             </a>
           </li>
           <li>
-            <a href="#" onclick="addToCart({ name: 'God Of War : ', price: 2900 })">
+            <a href="#" onclick="showProductModal({ name: 'God Of War : ', price: 2900 }, this); return false;">
               <img src="assets/imgs/godofwar.webp" alt="God Of War : " />
             </a>
           </li>
@@ -101,17 +107,17 @@
         </div>
         <ul>
           <li>
-            <a href="#" onclick="addToCart({ name: 'Ghost Of Tsushima : ', price: 3000})">
+            <a href="#" onclick="showProductModal({ name: 'Ghost Of Tsushima : ', price: 3000}, this); return false;">
               <img src="assets/imgs/ghost.png" alt="Ghost Of Tsushima : " />
             </a>
           </li>
           <li>
-            <a href="#" onclick="addToCart({ name: 'Far Cry 6 : ', price: 2080 })">
+            <a href="#" onclick="showProductModal({ name: 'Far Cry 6 : ', price: 2080 }, this); return false;">
               <img src="assets/imgs/farcry6.png" alt="Far Cry 6 : " />
             </a>
           </li>
           <li>
-            <a href="#" onclick="addToCart({ name: 'Cyber Punk 2077 : ', price: 1950 })">
+            <a href="#" onclick="showProductModal({ name: 'Cyber Punk 2077 : ', price: 1950 }, this); return false;">
               <img src="assets/imgs/cyberpunk.jpg" alt="Cyber Punk 2077 : " />
             </a>
           </li>
@@ -124,17 +130,17 @@
         </div>
         <ul>
           <li>
-            <a href="#" onclick="addToCart({ name: 'Call Of Duty 6 : ', price: 2000})">
+            <a href="#" onclick="showProductModal({ name: 'Call Of Duty 6 : ', price: 2000}, this); return false;">
               <img src="assets/imgs/callofduty6.jpg" alt="Call Of Duty 6 : " />
             </a>
           </li>
           <li>
-            <a href="#" onclick="addToCart({ name: 'Batman Arkham Knight : ', price: 800 })">
+            <a href="#" onclick="showProductModal({ name: 'Batman Arkham Knight : ', price: 800 }, this); return false;">
               <img src="assets/imgs/batman.jpg" alt="Batman Arkham Knight : " />
             </a>
           </li>
           <li>
-            <a href="#" onclick="addToCart({ name: 'Gta v : ', price: 1950 })">
+            <a href="#" onclick="showProductModal({ name: 'Gta v : ', price: 1950 }, this); return false;">
               <img src="assets/imgs/gta v.jpg" alt="Gta v : " />
             </a>
           </li>
@@ -178,6 +184,20 @@
 
 
 
-     <script src="script.js"></script>
+    <script src="script.js"></script>
+      <script src="searchbar.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const h = location.hash;
+        if (!h) return;
+        const id = h.slice(1);
+        const sec = document.getElementById(id);
+        if (!sec) return;
+        const target = sec.querySelector('ul li') || sec;
+        target.classList.add('search-highlight');
+        target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        setTimeout(() => target.classList.remove('search-highlight'), 2500);
+      });
+    </script>
   </body>
 </html>

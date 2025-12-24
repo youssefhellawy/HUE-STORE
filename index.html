@@ -25,6 +25,11 @@
 </ul>
 
       </nav>
+      <!-- Search Bar -->
+      <div class="search-container">
+        <input id="searchInput" type="search" placeholder="Search games..." aria-label="Search games" />
+        <button id="searchButton" aria-label="Search">Search</button>
+      </div>
       <!-- أيقونة السلة -->
       <div class="cart">
         <a href="#" id="cart">
@@ -99,18 +104,18 @@
         </div>
         <ul>
           <li>
-            <a href="#" onclick="addToCart({ name: 'FC 26 : ', price: 3500})">
-              <img src="assets/imgs/fc26.webp" alt="FC 26 : " />
+            <a href="#" onclick="showProductModal({ name: 'FC 26  ', price: 3500}, this); return false;">
+              <img src="assets/imgs/fc26.webp" alt="FC 26  " />
             </a>
           </li>
           <li>
-            <a href="#" onclick="addToCart({ name: 'EA Play : ', price: 500 })">
+            <a href="#" onclick="showProductModal({ name: 'EA Play  ', price: 500 }, this); return false;">
               <img src="assets/imgs/ea.jpg" alt="EA Play Pro : " />
             </a>
           </li>
           <li>
-            <a href="#" onclick="addToCart({ name: 'Call Of Duty BlackOps 7 : ', price: 3450 })">
-              <img src="assets/imgs/callofduty7.jpg" alt="Call Of Duty BlackOps 7 : " />
+            <a href="#" onclick="showProductModal({ name: 'Call Of Duty BlackOps 7  ', price: 3450 }, this); return false;">
+              <img src="assets/imgs/callofduty7.jpg" alt="Call Of Duty BlackOps 7  " />
             </a>
           </li>
         </ul>
@@ -126,17 +131,17 @@
           </div>
         <ul>
           <li>
-            <a href="#" onclick="addToCart({ name: 'Rdr2 : ', price: 4600 })">
+            <a href="#" onclick="showProductModal({ name: 'Rdr2  ', price: 4600 }, this); return false;">
               <img src="assets/imgs/rdr2.jpg" alt="Rdr2 :" />
             </a>
           </li>
           <li>
-            <a href="#" onclick="addToCart({ name: 'Hogwarts Legacy : ', price: 4100 })">
+            <a href="#" onclick="showProductModal({ name: 'Hogwarts Legacy  ', price: 4100 }, this); return false;">
               <img src="assets/imgs/Hogwarts.jpg" alt="Hogwarts Legacy :" />
             </a>
           </li>
           <li>
-            <a href="#" onclick="addToCart({ name: 'gta v : ', price: 2050 })">
+            <a href="#" onclick="showProductModal({ name: 'gta v  ', price: 2050 }, this); return false;">
               <img src="assets/imgs/gta v.jpg" alt="gta v :" />
             </a>
           </li>
@@ -177,5 +182,6 @@
     </footer>
 
     <script src="script.js"></script>
+    <script src="searchbar.js"></script>
   </body>
 </html>

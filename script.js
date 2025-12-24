@@ -1,11 +1,75 @@
 let cart = [];
-const cartCount = document.getElementById('cartCount');
-const cartModal = document.getElementById('cartModal');
-const closeCartButton = document.getElementById('closeCart');
-const CheckOutCartButton = document.getElementById('checkoutButton');
-const clearCartButton = document.getElementById('clearCart');
+const cartCount = document.getElementById('cartCount'); // عنصر لعرض عدد العناصر في السلة
+const cartModal = document.getElementById('cartModal'); // نافذة السلة
+const closeCartButton = document.getElementById('closeCart'); // زر إغلاق نافذة السلة
+const CheckOutCartButton = document.getElementById('checkoutButton'); 
+const clearCartButton = document.getElementById('clearCart'); 
 const cartItemsContainer = document.getElementById('cartItems');
 const cartTotal = document.getElementById('cartTotal');
+
+// --- Product details modal (created dynamically) ---
+let productModal = null;
+function ensureProductModal() {
+  if (productModal) return productModal;
+  productModal = document.createElement('div');
+  productModal.id = 'productModal';
+  productModal.className = 'product-modal';
+  productModal.innerHTML = `
+    <div class="product-modal-content">
+      <button class="product-modal-close" aria-label="Close">×</button>
+      <div class="product-modal-body">
+        <img class="product-modal-image" src="" alt="product image">
+        <div class="product-modal-info">
+          <h3 class="product-modal-name"></h3>
+          <p class="product-modal-price"></p>
+          <div class="product-modal-actions">
+            <button class="product-add-button">Add to cart</button>
+            <button class="product-cancel-button">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+  document.body.appendChild(productModal);
+
+  // wire buttons
+  productModal.querySelector('.product-modal-close').addEventListener('click', closeProductModal);
+  productModal.querySelector('.product-cancel-button').addEventListener('click', closeProductModal);
+  productModal.querySelector('.product-add-button').addEventListener('click', () => {
+    const data = productModal._currentProduct;
+    if (data) addToCart(data);
+    closeProductModal();
+  });
+
+  return productModal;
+}
+
+function showProductModal(product, anchor) {
+  const modal = ensureProductModal();
+  const imgEl = modal.querySelector('.product-modal-image');
+  const nameEl = modal.querySelector('.product-modal-name');
+  const priceEl = modal.querySelector('.product-modal-price');
+  // allow product to have image property; otherwise try to get from anchor
+  if (product.image) imgEl.src = product.image;
+  else if (anchor && anchor.querySelector) {
+    const img = anchor.querySelector('img');
+    imgEl.src = img ? img.src : '';
+  } else imgEl.src = '';
+
+  // store current product for add button
+  modal._currentProduct = { name: product.name, price: product.price };
+
+  nameEl.textContent = product.name;
+  priceEl.textContent = `Price: ${product.price} L.E`;
+  modal.style.display = 'flex';
+}
+
+function closeProductModal() {
+  if (!productModal) return;
+  productModal.style.display = 'none';
+  productModal._currentProduct = null;
+}
+
 
 // دالة لإضافة منتج إلى السلة
 function addToCart(product) {
@@ -133,8 +197,8 @@ function closePaymentModal() {
 }
 
 // دالة لعرض التنبيه
-function showToast(message) {
-  const toast = document.createElement('div');
+function showToast(message) { 
+  const toast = document.createElement('div'); 
   toast.classList.add('toast');
   toast.textContent = message;
   document.body.appendChild(toast);
